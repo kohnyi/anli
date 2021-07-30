@@ -28,10 +28,10 @@ python src/nli/training.py \
   --per_gpu_eval_batch_size 32 \
   --save_prediction \
   --train_data \
-snli_train:none,mnli_train:none,fever_train:none,anli_r1_train:none,anli_r2_train:none,anli_r3_train:none \
+anli_r1_train:none,anli_r2_train:none,anli_r3_train:none \
   --train_weights \
-1,1,1,10,20,10 \
+20,40,20 \
   --eval_data \
-snli_dev:none,mnli_m_dev:none,mnli_mm_dev:none,anli_r1_dev:none,anli_r2_dev:none,anli_r3_dev:none \
-  --eval_frequency 2000 \
-  --experiment_name "roberta-large|snli+mnli+fnli+r1*10+r2*20+r3*10|nli"
+anli_r1_dev:none,anli_r2_dev:none,anli_r3_dev:none \
+  --eval_frequency 4000 \
+  --experiment_name "filtered_full_model|roberta-large|snli+mnli+fnli+r1*10+r2*20+r3*10|nli"

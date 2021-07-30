@@ -166,15 +166,15 @@ registered_path = {
     'fever_dev': config.PRO_ROOT / "data/build/fever_nli/dev.jsonl",
     'fever_test': config.PRO_ROOT / "data/build/fever_nli/test.jsonl",
 
-    'anli_r1_train': config.PRO_ROOT / "data/build/anli/r1/train.jsonl",
+    'anli_r1_train': config.PRO_ROOT / "data/filtered_data/R1_Filtered_half.jsonl",
     'anli_r1_dev': config.PRO_ROOT / "data/build/anli/r1/dev.jsonl",
     'anli_r1_test': config.PRO_ROOT / "data/build/anli/r1/test.jsonl",
 
-    'anli_r2_train': config.PRO_ROOT / "data/build/anli/r2/train.jsonl",
+    'anli_r2_train': config.PRO_ROOT / "data/filtered_data/R2_Filtered_half.jsonl",
     'anli_r2_dev': config.PRO_ROOT / "data/build/anli/r2/dev.jsonl",
     'anli_r2_test': config.PRO_ROOT / "data/build/anli/r2/test.jsonl",
 
-    'anli_r3_train': config.PRO_ROOT / "data/build/anli/r3/train.jsonl",
+    'anli_r3_train': config.PRO_ROOT / "data/filtered_data/R3_Filtered_half.jsonl",
     'anli_r3_dev': config.PRO_ROOT / "data/build/anli/r3/dev.jsonl",
     'anli_r3_test': config.PRO_ROOT / "data/build/anli/r3/test.jsonl",
 }
