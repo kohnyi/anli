@@ -6,6 +6,14 @@
 import argparse
 from pathlib import Path
 
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(
+    os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir)
 import config
 from flint.data_utils.fields import RawFlintField, LabelFlintField, ArrayIndexFlintField
 from utils import common, list_dict_data_tool, save_tool
@@ -74,8 +82,10 @@ def evaluation():
     model = model_class_item['sequence_classification'].from_pretrained(model_name,
                                                                         cache_dir=str(config.PRO_ROOT / "trans_cache"),
                                                                         num_labels=num_labels)
-
-    model.load_state_dict(torch.load(model_checkpoint_path))
+    if args.cpu:
+      model.load_state_dict(torch.load(model_checkpoint_path, map_location=torch.device('cpu')))
+    else:
+      model.load_state_dict(torch.load(model_checkpoint_path))
 
     padding_token_value = tokenizer.convert_tokens_to_ids([tokenizer.pad_token])[0]
     padding_segement_value = model_class_item["padding_segement_value"]
@@ -94,7 +104,7 @@ def evaluation():
     for named_path in eval_data_named_path:
         ind = named_path.find(':')
         name = named_path[:ind]
-        path = name[ind + 1:]
+        path = named_path[ind + 1:]
         if name in registered_path:
             d_list = common.load_jsonl(registered_path[name])
         else:
